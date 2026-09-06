@@ -1,0 +1,35 @@
+.graph-edge {
+  stroke: var(--color-foreground-muted);
+  stroke-width: 1.75;
+}
+
+.graph-edge--recommended {
+  stroke-dasharray: 6 4;
+}
+
+.graph-edge--required {
+  stroke-dasharray: none;
+}
+
+.graph-edge--cycle {
+  stroke: var(--color-destructive);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.55));
+}
+
+.graph-edge__contested-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  min-height: 22px;
+  border-radius: 999px;
+  background: #f59e0b;
+  color: #1c1300;
+  border: 1px solid var(--color-background);
+  cursor: help;
+  pointer-events: all;
+}

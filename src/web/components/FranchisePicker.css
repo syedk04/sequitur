@@ -1,0 +1,29 @@
+.franchise-picker {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
+}
+
+.franchise-picker__intro {
+  margin-bottom: var(--space-6);
+}
+
+.franchise-picker__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+}
+
+.franchise-picker__subtitle {
+  color: var(--color-foreground-muted);
+  max-width: 65ch;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.franchise-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}

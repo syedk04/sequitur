@@ -1,0 +1,94 @@
+.franchise-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  cursor: pointer;
+  color: var(--color-foreground);
+  transition: border-color var(--transition-base), transform var(--transition-base), background var(--transition-base);
+  min-height: 44px;
+}
+
+.franchise-card:hover {
+  border-color: var(--color-primary);
+  background: var(--color-surface-muted);
+  transform: translateY(-2px);
+}
+
+.franchise-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.franchise-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.franchise-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: var(--space-1) var(--space-2);
+  border-radius: 999px;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+}
+
+.franchise-card__badge--danger {
+  background: rgba(239, 68, 68, 0.16);
+  color: #fca5a5;
+  border: 1px solid var(--color-destructive);
+}
+
+.franchise-card__description {
+  color: var(--color-foreground-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.franchise-card__stats {
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.franchise-card__stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.franchise-card__stat dt {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-foreground-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.franchise-card__stat dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1rem;
+}
