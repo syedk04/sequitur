@@ -1,0 +1,12 @@
+.truncated-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid #b45309;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  margin: var(--space-3);
+  color: #fcd34d;
+  font-size: 0.875rem;
+}

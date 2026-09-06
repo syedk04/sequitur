@@ -1,6 +1,8 @@
 import { Check } from "lucide-react";
 import type { ConsumptionNode } from "../../engine/types.js";
 import { MEDIA_KIND_ICONS, MEDIA_KIND_LABELS } from "../lib/mediaKindIcons.js";
+import { FILLER_BY_ANILIST_ID } from "../../fixtures/filler/index.js";
+import { FillerGuide } from "./FillerGuide.js";
 import "./OrderEntry.css";
 
 interface OrderEntryProps {
@@ -13,6 +15,7 @@ interface OrderEntryProps {
 
 export function OrderEntry({ node, requirement, seen, spoilerSafe, onToggleSeen }: OrderEntryProps) {
   const Icon = MEDIA_KIND_ICONS[node.kind];
+  const fillerInfo = node.anilistId !== undefined ? FILLER_BY_ANILIST_ID.get(node.anilistId) : undefined;
 
   return (
     <div className={`order-entry${seen ? " order-entry--seen" : ""}`}>
@@ -33,6 +36,7 @@ export function OrderEntry({ node, requirement, seen, spoilerSafe, onToggleSeen 
           {MEDIA_KIND_LABELS[node.kind]}
           {node.releaseDate ? ` · ${node.releaseDate}` : ""}
         </span>
+        {fillerInfo && <FillerGuide info={fillerInfo} />}
       </div>
 
       {spoilerSafe && (

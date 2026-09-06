@@ -1,6 +1,7 @@
 import { Home, Workflow, ListOrdered, ChevronRight } from "lucide-react";
 import type { Franchise } from "../../engine/types.js";
 import type { ViewName } from "../types.js";
+import { SourceBadge } from "./SourceBadge.js";
 import "./Header.css";
 
 interface HeaderProps {
@@ -23,6 +24,7 @@ export function Header({ franchise, view, onGoHome, onChangeView }: HeaderProps)
           <nav aria-label="Breadcrumb" className="header__breadcrumb">
             <ChevronRight aria-hidden="true" size={16} className="header__breadcrumb-sep" />
             <span className="header__breadcrumb-current">{franchise.name}</span>
+            <SourceBadge source={franchise.source} />
           </nav>
         )}
 

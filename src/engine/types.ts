@@ -38,6 +38,10 @@ export interface ConsumptionNode {
   inUniverseNote?: string;
   notes?: string;
   lengthMinutes?: number;
+  /** AniList numeric media id, used as a stable cross-reference key. */
+  anilistId?: number;
+  /** Total episode count for tv/ona entries, sourced from AniList. */
+  episodeCount?: number;
 }
 
 export type EdgeRelation =
@@ -75,12 +79,25 @@ export interface ConsumptionEdge {
   };
 }
 
+/**
+ * Where a `Franchise` came from. Absent/undefined is treated as `"curated"`
+ * — the hand-authored fixtures in `src/fixtures/` predate this field and do
+ * not need to set it explicitly.
+ */
+export type FranchiseSource = "curated" | "anilist-generated";
+
 export interface Franchise {
   id: FranchiseId;
   name: string;
   description?: string;
   nodes: ConsumptionNode[];
   edges: ConsumptionEdge[];
+  /** Absent/undefined means "curated" (hand-authored). */
+  source?: FranchiseSource;
+  /** ISO timestamp; only set for `"anilist-generated"` franchises. */
+  generatedAt?: string;
+  /** True if a crawl hit its node/depth cap before exhausting relations. */
+  truncated?: boolean;
 }
 
 export interface CycleReport {

@@ -53,6 +53,7 @@ export const fateNasuverse: Franchise = {
       title: "Fate/Zero (light novel)",
       kind: "light-novel",
       releaseDate: "2006-12-16",
+      anilistId: 33649, // verified via graphql.anilist.co (NOVEL-format MANGA-type entry, 2006)
       notes:
         "Gen Urobuchi's original novel. Chronologically the earliest Fate/stay night-adjacent " +
         "work: it tells the story of the 4th Holy Grail War, ~10 years before fsn's 5th war.",
@@ -63,6 +64,9 @@ export const fateNasuverse: Franchise = {
       title: "Fate/Zero",
       kind: "tv",
       releaseDate: "2011-10-01",
+      // Verified via graphql.anilist.co. Collapses both Fate/Zero cours into one node; this is
+      // season 1's id (season 2, "Fate/Zero 2nd Season," is a separate AniList entry).
+      anilistId: 10087,
       notes:
         "ufotable's TV adaptation. Used as the representative 'Fate/Zero' node for cross-work " +
         "edges in this fixture (see file header).",
@@ -73,6 +77,7 @@ export const fateNasuverse: Franchise = {
       title: "Fate/Zero (manga)",
       kind: "manga",
       releaseDate: "2011-06-16",
+      anilistId: 55191, // verified via graphql.anilist.co
       notes: "Shinjirou's manga adaptation, serialized alongside the TV anime's initial run.",
     },
     {
@@ -82,6 +87,9 @@ export const fateNasuverse: Franchise = {
       altTitles: ["Fate/stay night [Realta Nua]"],
       kind: "visual-novel",
       releaseDate: "2004-01-30",
+      // No anilistId set: AniList's MediaType enum only covers ANIME and MANGA — it does not
+      // catalog visual novels at all (that's VNDB's domain), so there is no real AniList id
+      // to backfill here. Flagged prominently in the ingestion task report.
       notes:
         "Collapses all three routes (Fate, Unlimited Blade Works, Heaven's Feel) into one node " +
         "— see file header for why. Tells the story of the 5th Holy Grail War.",
@@ -92,6 +100,7 @@ export const fateNasuverse: Franchise = {
       title: "Fate/stay night (manga)",
       kind: "manga",
       releaseDate: "2006-03-19",
+      anilistId: 30715, // verified via graphql.anilist.co
       notes: "Dat Nishiwaki's manga adaptation, primarily follows the Fate route.",
     },
     {
@@ -100,6 +109,7 @@ export const fateNasuverse: Franchise = {
       title: "Fate/stay night (2006)",
       kind: "tv",
       releaseDate: "2006-01-06",
+      anilistId: 356,
       notes:
         "Studio DEEN's original TV adaptation. Primarily adapts the Fate route with an " +
         "original ending; famously divisive among fans relative to the source VN.",
@@ -111,7 +121,7 @@ export const fateNasuverse: Franchise = {
       kind: "movie",
       releaseDate: "2010-01-23",
       lengthMinutes: 120,
-      notes: "Studio DEEN's compressed single-film adaptation of the UBW route.",
+      anilistId: 6922, // verified via graphql.anilist.co
     },
     {
       id: "fsn-ubw-anime",
@@ -119,6 +129,9 @@ export const fateNasuverse: Franchise = {
       title: "Fate/stay night: Unlimited Blade Works (2014-2015)",
       kind: "tv",
       releaseDate: "2014-10-04",
+      // Verified via graphql.anilist.co. Collapses both cours into one node; this is season 1's
+      // id (season 2, "Unlimited Blade Works 2nd Season," id 20792, is a separate AniList entry).
+      anilistId: 19603,
       notes: "ufotable's two-cour TV adaptation of the UBW route; the most widely-watched one.",
     },
     {
@@ -128,6 +141,7 @@ export const fateNasuverse: Franchise = {
       kind: "movie",
       releaseDate: "2017-10-14",
       lengthMinutes: 128,
+      anilistId: 20791, // verified via graphql.anilist.co
     },
     {
       id: "hf-2",
@@ -136,6 +150,7 @@ export const fateNasuverse: Franchise = {
       kind: "movie",
       releaseDate: "2019-01-12",
       lengthMinutes: 117,
+      anilistId: 21718, // verified via graphql.anilist.co
     },
     {
       id: "hf-3",
@@ -144,6 +159,7 @@ export const fateNasuverse: Franchise = {
       kind: "movie",
       releaseDate: "2020-01-25",
       lengthMinutes: 120,
+      anilistId: 21719, // verified via graphql.anilist.co
     },
     {
       id: "fgo",
@@ -151,6 +167,9 @@ export const fateNasuverse: Franchise = {
       title: "Fate/Grand Order",
       kind: "game",
       releaseDate: "2015-07-29",
+      // No anilistId set: this node represents the mobile game itself, which is not an ANIME-
+      // or MANGA-typed entry on AniList (only its anime adaptations, e.g. "Fate/Grand Order:
+      // First Order", are cataloged there, and those aren't what this node models).
       notes:
         "Modeled only as a sink for recommended prior-knowledge edges from Zero/stay night — " +
         "none of FGO's own Singularities/Lostbelts are modeled. Out of scope by design.",

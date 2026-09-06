@@ -43,6 +43,7 @@ export const gundamUC: Franchise = {
       kind: "ova",
       releaseDate: "2015-06-27",
       inUniverseNote: "UC 0068-0079",
+      anilistId: 10937, // verified via graphql.anilist.co search; collapses the 6-part OVA into one node
       notes:
         "Chronologically the earliest entry modeled here (covers Char and the Zabi family's " +
         "backstory through the start of the One Year War) but released decades after the " +
@@ -55,6 +56,7 @@ export const gundamUC: Franchise = {
       kind: "tv",
       releaseDate: "1979-04-07",
       inUniverseNote: "UC 0079",
+      anilistId: 80,
       notes: "The original series; start of the One Year War. Required main-sequence entry 1/4.",
     },
     {
@@ -64,6 +66,7 @@ export const gundamUC: Franchise = {
       kind: "ova",
       releaseDate: "1996-01-25",
       inUniverseNote: "UC 0079",
+      anilistId: 81, // verified via graphql.anilist.co
       notes: "Ground-war side story concurrent with the One Year War's back half.",
     },
     {
@@ -73,6 +76,7 @@ export const gundamUC: Franchise = {
       kind: "ova",
       releaseDate: "1989-03-25",
       inUniverseNote: "UC 0079-0080",
+      anilistId: 82, // verified via graphql.anilist.co
       notes: "Interquel set in the immediate aftermath of the One Year War.",
     },
     {
@@ -82,6 +86,7 @@ export const gundamUC: Franchise = {
       kind: "ova",
       releaseDate: "1991-05-24",
       inUniverseNote: "UC 0083",
+      anilistId: 84, // verified via graphql.anilist.co (was wrongly 1006, a different OVA, before verification)
       notes: "Interquel bridging the gap between the One Year War and the Gryps Conflict.",
     },
     {
@@ -91,6 +96,7 @@ export const gundamUC: Franchise = {
       kind: "tv",
       releaseDate: "1985-03-02",
       inUniverseNote: "UC 0087-0088",
+      anilistId: 85, // verified via graphql.anilist.co (was wrongly 68 = "Black Cat", an unrelated series)
       notes: "The Gryps Conflict / AEUG vs. Titans. Required main-sequence entry 2/4.",
     },
     {
@@ -100,6 +106,7 @@ export const gundamUC: Franchise = {
       kind: "tv",
       releaseDate: "1986-03-01",
       inUniverseNote: "UC 0088",
+      anilistId: 86, // verified via graphql.anilist.co (was wrongly 71 = "Full Metal Panic!", an unrelated series)
       notes: "Direct continuation of Zeta; the fall of the Neo Zeon remnants. Required 3/4.",
     },
     {
@@ -110,6 +117,7 @@ export const gundamUC: Franchise = {
       releaseDate: "1988-03-12",
       lengthMinutes: 124,
       inUniverseNote: "UC 0093",
+      anilistId: 87, // verified via graphql.anilist.co (was wrongly 973, an unrelated entry)
       notes: "The Second Neo Zeon War; Char and Amuro's final confrontation. Required 4/4.",
     },
     {
@@ -119,6 +127,7 @@ export const gundamUC: Franchise = {
       kind: "ova",
       releaseDate: "2010-03-12",
       inUniverseNote: "UC 0096",
+      anilistId: 6336, // verified via graphql.anilist.co; collapses the 7-episode OVA into one node
       notes: "Set three years after CCA. See file header re: the contested placement edge.",
     },
     {
@@ -128,6 +137,7 @@ export const gundamUC: Franchise = {
       kind: "ova",
       releaseDate: "2017-05-26",
       inUniverseNote: "UC 0096",
+      anilistId: 98504, // verified via graphql.anilist.co; collapses a 6-part ONA into one node
       notes: "Side story concurrent with the middle of Unicorn's own runtime.",
     },
     {
@@ -138,6 +148,7 @@ export const gundamUC: Franchise = {
       releaseDate: "2018-10-19",
       lengthMinutes: 129,
       inUniverseNote: "UC 0097",
+      anilistId: 101554, // verified via graphql.anilist.co
       notes: "Direct follow-up to Unicorn, tying up the Phenex/Sinanju Stein threads.",
     },
     {
@@ -147,6 +158,7 @@ export const gundamUC: Franchise = {
       kind: "movie",
       releaseDate: "2021-06-11",
       inUniverseNote: "UC 0105",
+      anilistId: 105595, // verified via graphql.anilist.co
       notes:
         "Based on Tomino's novel continuity for Hathaway Noa. Placed here as the latest UC " +
         "entry modeled; some readers treat the novel-derived post-CCA continuity as distinct " +

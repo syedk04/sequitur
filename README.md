@@ -28,6 +28,19 @@ divergence between release order and chronological order, and edges the fandom i
   an entry is revealed only if its *entire* transitive prerequisite closure (both required and
   recommended edges — a "recommended" side-story can still spoil what comes after it) is already
   seen. Nodes that fail this are omitted outright, not blurred or placeholder'd.
+- **Search any anime on AniList and get an auto-generated graph on the fly.** A live GraphQL
+  crawl of AniList's relation data (best-first, prioritizing sequel/prequel chains over side
+  content so a mainline entry never gets starved out by trivia when a franchise is too large to
+  crawl in full) builds a watch-order graph for anything not already hand-curated. It's clearly
+  labeled "auto-generated — unverified" in the UI, because AniList's relation data has no
+  chronological-order or contested-edge information — the auto-generated graph only ever
+  populates the release track, on principle, rather than faking a timeline it doesn't have.
+- **Hand-curated fixtures always win.** If a search matches one of the three hand-curated
+  franchises below, the curated graph is served instead of an auto-generated duplicate — that's
+  the whole reason those three exist in the first place.
+- **Filler-episode guide.** For franchises with a hand-curated filler dataset (currently One
+  Piece), the watch-order view shows which episode ranges are filler vs. plot-relevant, purely as
+  a read-only viewing guide — it doesn't touch the ordering graph or the spoiler-safe seen-set.
 
 ## Project layout
 
@@ -41,15 +54,22 @@ src/
     divergence.ts      release-vs-chronological pair comparison
     spoiler-filter.ts  seen-set -> revealable-entries, closure-based
     analyze.ts         orchestrates the above into one result
+  ingestion/    live AniList GraphQL integration — network/IO, isolated from the engine
+    anilist/mapper.ts  AniList relation type -> our edge model, pure and unit-tested
+    anilist/crawl.ts   best-first relation-graph crawl into a self-contained Franchise
+    anilist/client.ts  fetch wrapper: batching, retry, rate-limit backoff, timeout
+    anilist/cache.ts   IndexedDB-backed response cache
+    curated-match.ts   AniList id -> hand-curated Franchise lookup, so curated data always wins
   fixtures/     hand-authored franchise data (the domain-expertise layer)
     fate-nasuverse.ts  core F/SN + Zero + Heaven's Feel; the release-vs-chrono divergence case
     monogatari.ts      release order vs. "story order," extensively divergent
     gundam-uc.ts       required main sequence + optional side-stories + a contested edge
-  web/          Vite + React + TypeScript UI: franchise picker, graph view, watch-order view
+    filler/            hand-curated filler-episode datasets (One Piece), joined by AniList id
+  web/          Vite + React + TypeScript UI: search, franchise picker, graph view, watch-order view
 ```
 
-The engine has no dependency on the UI and is fully covered by its own test suite — it's designed
-to be reused by a future ingestion pipeline or backend without change.
+The engine has no dependency on the UI or the ingestion layer, and is fully covered by its own
+test suite. `ingestion/` depends only on the engine's types, never the other way around.
 
 ## Running it
 
@@ -64,8 +84,9 @@ npm run build      # production build to dist/
 
 ## Scope
 
-This is v1. Deliberately out of scope for now, but designed for: an AniList ingestion pipeline
-(to seed franchises the curator doesn't already know cold), a community voting/conflict-resolution
-layer for contested edges, and auth. Three franchises are hand-curated by someone who actually
-knows them, specifically to validate the data model against real, messy continuity before
-building any automated ingestion on top of it.
+Three franchises (Fate/Nasuverse, Monogatari, Gundam UC) are hand-curated by someone who actually
+knows them, and every other searchable series falls back to a live, clearly-labeled
+auto-generated AniList crawl. Deliberately still out of scope: a community voting/
+conflict-resolution layer for contested edges, and auth — both are real future work, not
+oversights. The One Piece filler dataset is likewise a hand-curated, point-in-time best effort
+(there's no legitimate free API for filler-episode data), not a live-updating feed.

@@ -74,6 +74,10 @@ export const monogatari: Franchise = {
       kind: "movie",
       releaseDate: "2016-08-19",
       lengthMinutes: 260,
+      // Verified via graphql.anilist.co. Collapses the 3-film trilogy into one node; AniList
+      // catalogs each part separately (Part I id 9260, II id 21399, III id 21400) — using
+      // Part I's id here as the representative, same convention as fz-anime in fate-nasuverse.ts.
+      anilistId: 9260,
       notes:
         "Movie trilogy collapsed into one node. Chronologically the FIRST story in the series " +
         "(Koyomi's spring-break vampire arc), but released dead last relative to everything " +
@@ -85,6 +89,7 @@ export const monogatari: Franchise = {
       title: "Bakemonogatari",
       kind: "tv",
       releaseDate: "2009-07-03",
+      anilistId: 5081,
       notes: "Where the anime franchise actually began. Chronologically follows Kizumonogatari.",
     },
     {
@@ -93,6 +98,7 @@ export const monogatari: Franchise = {
       title: "Nekomonogatari: Kuro",
       kind: "ova",
       releaseDate: "2012-12-31",
+      anilistId: 15689, // verified via graphql.anilist.co
       notes: "Tsubasa Family arc; chronologically set during Bakemonogatari's Golden Week.",
     },
     {
@@ -101,6 +107,7 @@ export const monogatari: Franchise = {
       title: "Nisemonogatari",
       kind: "tv",
       releaseDate: "2012-01-08",
+      anilistId: 11597, // verified via graphql.anilist.co (was wrongly 11759 before verification)
       notes:
         "Karen Bee / Tsukihi Phoenix. Released BEFORE Nekomonogatari: Kuro despite Kuro " +
         "being chronologically earlier — an internal divergence pair within this fixture.",
@@ -111,6 +118,11 @@ export const monogatari: Franchise = {
       title: "Nekomonogatari: Shiro",
       kind: "tv",
       releaseDate: "2013-07-06",
+      // Verified via graphql.anilist.co: AniList catalogs the entire broadcast run of
+      // Nekomonogatari Shiro/Kabuki/Otori/Oni/Koi as a single entry, "Monogatari Series: Second
+      // Season" (id 17074) — these 5 curated nodes do NOT map 1:1 onto distinct AniList media
+      // ids the way they're split here; all five share this id by necessity.
+      anilistId: 17074,
       notes: "Tsubasa Cat arc; opens the Monogatari Series Second Season broadcast.",
     },
     {
@@ -119,6 +131,7 @@ export const monogatari: Franchise = {
       title: "Kabukimonogatari",
       kind: "tv",
       releaseDate: "2013-08-03",
+      anilistId: 17074, // verified via graphql.anilist.co; shares one AniList entry, see neko-shiro's note
       notes: "Mayoi Jiangshi.",
     },
     {
@@ -127,6 +140,7 @@ export const monogatari: Franchise = {
       title: "Otorimonogatari",
       kind: "tv",
       releaseDate: "2013-08-31",
+      anilistId: 17074, // verified via graphql.anilist.co; shares one AniList entry, see neko-shiro's note
       notes: "Nadeko Medusa.",
     },
     {
@@ -135,6 +149,7 @@ export const monogatari: Franchise = {
       title: "Onimonogatari",
       kind: "tv",
       releaseDate: "2013-09-28",
+      anilistId: 17074, // verified via graphql.anilist.co; shares one AniList entry, see neko-shiro's note
       notes: "Shinobu Time.",
     },
     {
@@ -143,6 +158,7 @@ export const monogatari: Franchise = {
       title: "Koimonogatari",
       kind: "tv",
       releaseDate: "2013-10-26",
+      anilistId: 17074, // verified via graphql.anilist.co; shares one AniList entry, see neko-shiro's note
       notes: "Hitagi End; closes out Second Season.",
     },
     {
@@ -151,6 +167,7 @@ export const monogatari: Franchise = {
       title: "Hanamonogatari",
       kind: "tv",
       releaseDate: "2014-08-01",
+      anilistId: 20593, // verified via graphql.anilist.co
       notes:
         "Suruga Devil. Released relatively early (Aug 2014) but is chronologically one of the " +
         "LATEST entries in the series (Suruga's third-year winter) — the second headline " +
@@ -163,6 +180,7 @@ export const monogatari: Franchise = {
       kind: "movie",
       releaseDate: "2014-12-27",
       lengthMinutes: 54,
+      anilistId: 20918, // verified via graphql.anilist.co
       notes: "Yotsugi Doll; Shinobu-focused New Year's story.",
     },
     {
@@ -171,6 +189,7 @@ export const monogatari: Franchise = {
       title: "Owarimonogatari (Part 1 & 2)",
       kind: "tv",
       releaseDate: "2015-10-03",
+      anilistId: 21262, // verified via graphql.anilist.co; collapses TV parts 1 and 2 into one node
       notes:
         "Ougi Formula, Sodachi Riddle, Sodachi Lost, Shinobu Mail. TV parts 1 and 2 collapsed " +
         "into a single node for this fixture.",
@@ -181,6 +200,7 @@ export const monogatari: Franchise = {
       title: "Koyomimonogatari",
       kind: "ona",
       releaseDate: "2016-08-24",
+      anilistId: 21520, // verified via graphql.anilist.co
       notes:
         "12 short side-stories scattered across Koyomi's timeline, bundled with the Kizu " +
         "movies' home video releases. Placed here as a bridge before Owarimonogatari's final " +
@@ -192,6 +212,7 @@ export const monogatari: Franchise = {
       title: "Owarimonogatari (Part 3 / Naoetsu High arc)",
       kind: "tv",
       releaseDate: "2017-08-12",
+      anilistId: 21745, // verified via graphql.anilist.co (AniList: "Owarimonogatari (Ge)" / Second Season)
       notes: "The Araragi Koyomi arc closing out the main Owarimonogatari story.",
     },
     {
@@ -201,6 +222,11 @@ export const monogatari: Franchise = {
       kind: "movie",
       releaseDate: "2018-01-13",
       lengthMinutes: 65,
+      // Verified via graphql.anilist.co. Note: AniList's entry (id 100815) catalogs the 2019-02
+      // 6-episode OVA broadcast/home-video release, whereas this node's releaseDate reflects the
+      // earlier 2018-01-13 theatrical premiere — same underlying work, two release events; kept
+      // as originally curated since theatrical release date is the more commonly cited one.
+      anilistId: 100815,
       notes: "Hitagi Rendezvous. Chronologically the series' true epilogue — Koyomi as an adult.",
     },
   ],

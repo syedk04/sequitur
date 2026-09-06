@@ -2,13 +2,15 @@ import { useMemo } from "react";
 import { analyzeFranchise } from "../../engine/index.js";
 import { FRANCHISES } from "../lib/franchises.js";
 import { FranchiseCard } from "./FranchiseCard.js";
+import { FranchiseSearch } from "./FranchiseSearch.js";
 import "./FranchisePicker.css";
 
 interface FranchisePickerProps {
   onSelect: (franchiseId: string) => void;
+  onSelectAnilistId: (anilistId: number) => void;
 }
 
-export function FranchisePicker({ onSelect }: FranchisePickerProps) {
+export function FranchisePicker({ onSelect, onSelectAnilistId }: FranchisePickerProps) {
   const cards = useMemo(
     () =>
       FRANCHISES.map((franchise) => ({
@@ -29,6 +31,9 @@ export function FranchisePicker({ onSelect }: FranchisePickerProps) {
           the two genuinely disagree — pick one to explore its continuity graph.
         </p>
       </div>
+
+      <FranchiseSearch onSelect={onSelectAnilistId} />
+
       <div className="franchise-picker__grid">
         {cards.map(({ franchise, analysis }) => (
           <FranchiseCard
